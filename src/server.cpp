@@ -3,7 +3,18 @@
 #include <netdb.h>
 
 typedef int SOCKET;
-#define MAX_CLIENTS 2 * 4
+#define NB_PARTIES 4
+#define JOUEURS_PAR_PARTIE 2
+#define MAX_CLIENTS (NB_PARTIES * JOUEURS_PAR_PARTIE)'
+
+typedef struct {
+    SOCKET joueur[2];
+    char grille[9];
+    int tour;
+    int terminee;
+} partie;
+
+partie parties[NB_PARTIES] = {0};
 
 #define PORT_NUM 6969
 int main(void){
